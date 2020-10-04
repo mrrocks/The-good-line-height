@@ -14,18 +14,15 @@
       .controls {
         height: 200px;
       }
-      .baseline {
-        background-image: linear-gradient(
-          0deg,
-          #fff 25%,
-          #e5e5e5 25%,
+      .baselineGrid {
+        background: linear-gradient(
+          to bottom,
+          #e5e5e5,
           #e5e5e5 50%,
           #fff 50%,
-          #fff 75%,
-          #e5e5e5 75%,
-          #e5e5e5 100%
+          #fff
         );
-        background-size: 32px 32px;
+        background-size: 100% 16px;
       }
       #sample {
         position: relative;
@@ -40,7 +37,7 @@
       <label for="lineHeight">Text size</label>
       <input type="number" class="text" id="textSize" value="" />
 
-      <label for="lineHeight">Baseline grid (row height)</label>
+      <label for="lineHeight">Baseline grid</label>
       <input type="number" class="text" id="baselineRowHeight" value="8" />
 
       <label for="lineHeightRatio">Line height ratio</label>
@@ -48,7 +45,7 @@
 
       <button id="calculateLineHeightButton">Calculate line-height</button>
     </div>
-    <div class="baseline">
+    <div class="baselineGrid" id="baselineGrid">
       <div id="sample">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
         faucibus a massa sed mattis. Phasellus cursus feugiat nisi nec molestie.
