@@ -2,6 +2,7 @@ const calculateLineHeightButton = document.getElementById(
   "calculateLineHeightButton"
 );
 const sample = document.getElementById("sample");
+const container = document.getElementById("container");
 
 let getTextSize = () => {
   let textSize = Number(document.getElementById("textSize").value);
@@ -9,7 +10,7 @@ let getTextSize = () => {
 };
 
 let getBaselineRowHeight = () => {
-  let baselineRowHeight = document.getElementById("baselineRowHeight").value;
+  let baselineRowHeight = Number(document.getElementById("baselineRowHeight").value);
   if (baselineRowHeight.length == 0) baselineRowHeight = 8;
   return baselineRowHeight;
 };
@@ -27,34 +28,34 @@ let calculateLineHeight = () => {
   return lineHeight;
 };
 
-let getCoords = (elem) => {
-  let box = elem.getBoundingClientRect();
+// let getCoords = (elem) => {
+//   let box = elem.getBoundingClientRect();
 
-  return {
-    top: box.top + window.pageYOffset,
-    right: box.right + window.pageXOffset,
-    bottom: box.bottom + window.pageYOffset,
-    left: box.left + window.pageXOffset,
-  };
-};
+//   return {
+//     top: box.top + window.pageYOffset,
+//     right: box.right + window.pageXOffset,
+//     bottom: box.bottom + window.pageYOffset,
+//     left: box.left + window.pageXOffset,
+//   };
+// };
 
 let getBaseline = (element) => {
   let span = document.createElement("span");
-  // span.setAttribute("style", "font-size:0");
+  span.setAttribute("style", "font-size:0");
   span.innerText = "A";
   element.insertBefore(span, element.firstChild);
 
-  let computed = getCoords(span).bottom;
-
-  //span.remove();
-
-  console.log(computed);
+  let computed = span.getBoundingClientRect().bottom - element.offsetTop;
+  console.log(span.getBoundingClientRect().bottom, element.offsetTop)
+  span.remove();
 
   return computed;
 };
 
 calculateLineHeightButton.addEventListener("click", (event) => {
+  sample.style.top = `0`;
+  
   sample.style.fontSize = `${getTextSize()}px`;
   sample.style.lineHeight = `${calculateLineHeight()}px`;
-  sample.style.top = `-${getBaseline(sample)}px`;
+  sample.style.top = `-${getBaseline(sample) - getBaselineRowHeight()}px`;
 });
