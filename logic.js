@@ -8,13 +8,13 @@ let getTextSize = () => {
 
 let getBaselineRowHeight = () => {
   let baselineRowHeight = document.getElementById("baselineRowHeight").value
-  if (baselineRowHeight.length == 0) {baselineRowHeight = 8}
+  if (baselineRowHeight.length == 0) baselineRowHeight = 8
   return baselineRowHeight
 }
 
 let getLineHeightRatio = () => {
   let lineHeightRatio = document.getElementById("lineHeightRatio").value
-  if (lineHeightRatio.length == 0) {lineHeightRatio = 1.3}
+  if (lineHeightRatio.length == 0) lineHeightRatio = 1.3
   return lineHeightRatio
 }
 
@@ -42,8 +42,10 @@ let getBaseline = (element) => {
 
   let computed = getCoords(span).bottom;
   
-  span.remove();
+  //span.remove();
+  
   console.log(computed)
+  
   return computed;
 }
 
