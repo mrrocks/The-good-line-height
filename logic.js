@@ -52,4 +52,7 @@ calculateLineHeightButton.addEventListener("click", (event) => {
   sample.style.top = `-${
     getBaseline(sample) - getBaselineRowHeight()
   }px`
+
+  baselineGrid.style.backgroundSize = `100% ${getBaselineRowHeight() * 2}px`
+
 })
