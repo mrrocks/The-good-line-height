@@ -1,58 +1,94 @@
-const calculateLineHeightButton = document.getElementById(
-  "calculateLineHeightButton"
-)
 const sample = document.getElementById("sample")
-const container = document.getElementById("container")
-const baselineGrid = document.getElementById("baselineGrid")
+const baselineGridBackground = document.getElementById("baselineGridBackground")
 
-let getTextSize = () => {
-  let textSize = Number(document.getElementById("textSize").value)
-  return textSize
+const textSizeInput = document.getElementById("textSizeInput")
+const textSizeRange = document.getElementById("textSizeRange")
+const lineHeightRatioInput = document.getElementById("lineHeightRatioInput")
+const lineHeightRatioRange = document.getElementById("lineHeightRatioRange")
+const baselineGridInput = document.getElementById("baselineGridInput")
+const baselineGridRange = document.getElementById("baselineGridRange")
+const lineHeightDiv = document.getElementById("lineHeightDiv")
+
+let getTextProperties = () => {
+  size = Number(textSizeInput.value)
+  ratio = Number(lineHeightRatioInput.value)
+  grid = Number(baselineGridInput.value)
+
+  return {
+    size,
+    ratio,
+    grid,
+  }
 }
 
-let getBaselineRowHeight = () => {
-  let baselineRowHeight = Number(
-    document.getElementById("baselineRowHeight").value
-  )
-  if (baselineRowHeight.length == 0) baselineRowHeight = 8
-  return baselineRowHeight
+let calculateOffset = () => {
+  let proxy = document.createElement("span")
+  proxy.setAttribute("style", "font-size:0")
+  proxy.innerText = "A"
+  sample.insertBefore(proxy, sample.firstChild)
+
+  let offset =
+    proxy.getBoundingClientRect().bottom -
+    sample.offsetTop -
+    getTextProperties().grid
+
+  proxy.remove()
+
+  return offset
 }
 
-let getLineHeightRatio = () => {
-  let lineHeightRatio = document.getElementById("lineHeightRatio").value
-  if (lineHeightRatio.length == 0) lineHeightRatio = 1.3
-  return lineHeightRatio
-}
+let calculateLineHeight = ({ size, ratio, grid }) => {
+  let lineHeight = Math.ceil((size * ratio) / grid) * grid
 
-let calculateLineHeight = () => {
-  let lineHeight =
-    Math.ceil((getTextSize() * getLineHeightRatio()) / getBaselineRowHeight()) *
-    getBaselineRowHeight()
   return lineHeight
 }
 
-let getBaseline = (element) => {
-  let span = document.createElement("span")
-  span.setAttribute("style", "font-size:0")
-  span.innerText = "A"
-  element.insertBefore(span, element.firstChild)
-
-  let computed = span.getBoundingClientRect().bottom - element.offsetTop
-
-  span.remove()
-
-  return computed
+let renderBaselineGrid = () => {
+  baselineGridBackground.style.backgroundSize = `100% ${
+    getTextProperties().grid * 2
+  }px`
 }
 
-calculateLineHeightButton.addEventListener("click", (event) => {
+let applyTextProperties = () => {
+  textProperties = getTextProperties()
+  lineHeight = calculateLineHeight(textProperties)
+
   sample.style.top = `0`
 
-  sample.style.fontSize = `${getTextSize()}px`
-  sample.style.lineHeight = `${calculateLineHeight()}px`
-  sample.style.top = `-${
-    getBaseline(sample) - getBaselineRowHeight()
-  }px`
+  sample.style.fontSize = `${textProperties.size}px`
+  sample.style.lineHeight = `${lineHeight}px`
+  sample.style.top = `-${calculateOffset()}px`
 
-  baselineGrid.style.backgroundSize = `100% ${getBaselineRowHeight() * 2}px`
+  lineHeightDiv.innerHTML = lineHeight
 
+  renderBaselineGrid()
+}
+
+textSizeInput.addEventListener("input", function (e) {
+  textSizeRange.value = this.value
+  applyTextProperties(this.value)
 })
+textSizeRange.addEventListener("input", function (e) {
+  textSizeInput.value = this.value
+  applyTextProperties(this.value)
+})
+
+lineHeightRatioInput.addEventListener("input", function (e) {
+  lineHeightRatioRange.value = this.value
+  applyTextProperties(this.value)
+})
+lineHeightRatioRange.addEventListener("input", function (e) {
+  lineHeightRatioInput.value = this.value
+  applyTextProperties(this.value)
+})
+
+baselineGridInput.addEventListener("input", function (e) {
+  baselineGridRange.value = this.value
+  applyTextProperties(this.value)
+})
+baselineGridRange.addEventListener("input", function (e) {
+  baselineGridInput.value = this.value
+  applyTextProperties(this.value)
+})
+
+applyTextProperties(16)

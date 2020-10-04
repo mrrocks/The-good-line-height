@@ -14,6 +14,9 @@
       .controls {
         height: 200px;
       }
+      input[type="number"] {
+        width: 60px;
+      }
       .baselineGrid {
         background: linear-gradient(
           to bottom,
@@ -33,19 +36,24 @@
   <body>
     <div class="controls">
       <h1>Baseline based line-height calculator</h1>
-
-      <label for="lineHeight">Text size</label>
-      <input type="number" class="text" id="textSize" value="" />
-
-      <label for="lineHeight">Baseline grid</label>
-      <input type="number" class="text" id="baselineRowHeight" value="8" />
-
-      <label for="lineHeightRatio">Line height ratio</label>
-      <input type="number" class="text" id="lineHeightRatio" value="1.3" />
-
-      <button id="calculateLineHeightButton">Calculate line-height</button>
+      <div>
+        Text size
+        <input type="range" id="textSizeRange" min="10" max="80" value="16" />
+        <input type="number" id="textSizeInput" value="16" />
+      </div>
+      <div>
+        Line height ratio
+        <input type="range" id="lineHeightRatioRange" step="0.1" min="1" max="2" value="1.3" />
+        <input type="number" step="0.1" id="lineHeightRatioInput" value="1.3" />
+      </div>
+      <div>
+        <label for="lineHeight">Baseline grid</label>
+        <input type="range" id="baselineGridRange" min="4" max="20" value="8" />
+        <input type="number" id="baselineGridInput" value="8" />
+      </div>
+      <div id="lineHeightDiv"></div>
     </div>
-    <div class="baselineGrid" id="baselineGrid">
+    <div class="baselineGrid" id="baselineGridBackground">
       <div id="sample">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
         faucibus a massa sed mattis. Phasellus cursus feugiat nisi nec molestie.
