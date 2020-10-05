@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +18,8 @@
       input[type="number"] {
         width: 60px;
       }
-      .baselineGrid {
+      .baseline-grid {
+        position: static;
         background: linear-gradient(
           to bottom,
           #e5e5e5,
@@ -27,6 +29,13 @@
         );
         background-size: 100% 16px;
       }
+
+      .baseline-grid-visibility {
+        position: absolute;
+        top: -20px;
+        right: 0;
+      }
+
       #sample {
         position: relative;
       }
@@ -62,7 +71,8 @@
         Baseline based line-height: <span id="generatedLineHeight"></span>
       </h3>
     </div>
-    <div class="baselineGrid" id="baselineGridBackground">
+    <div class="baseline-grid" id="baselineGridBackground">
+      <a href="" class="baseline-grid-visibility" id="baselineGridVisibility">Hide baseline grid</a>
       <div id="sample">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
         faucibus a massa sed mattis. Phasellus cursus feugiat nisi nec molestie.
