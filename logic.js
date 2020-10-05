@@ -12,7 +12,7 @@ const baselineGridRange = document.getElementById("baselineGridRange")
 
 const generatedLineHeight = document.getElementById("generatedLineHeight")
 
-let getTextProperties = () => {
+let getTextProps = () => {
   size = Number(textSizeInput.value)
   ratio = Number(lineHeightRatioInput.value)
   grid = Number(baselineGridInput.value)
@@ -24,7 +24,7 @@ let getTextProperties = () => {
   }
 }
 
-let setTextProperties = (size, ratio, grid) => {
+let setTextProps = (size, ratio, grid) => {
   textSizeInput.value = size
   lineHeightRatioInput.value = ratio
   baselineGridInput.value = grid
@@ -42,10 +42,12 @@ let calculateBaselineOffset = () => {
   proxy.innerText = "A"
   sample.insertBefore(proxy, sample.firstChild)
 
-  let offset =
+  let textProps = getTextProps()
+  let lineHeight = calculateLineHeight(textProps)
+
+  let offset = Math.round(
     proxy.getBoundingClientRect().bottom -
-    sample.offsetTop -
-    getTextProperties().grid
+    sample.offsetTop)
 
   proxy.remove()
 
@@ -60,19 +62,17 @@ let calculateLineHeight = ({ size, ratio, grid }) => {
 
 let renderBaselineGrid = () => {
   baselineGridBackground.style.backgroundSize = `100% ${
-    getTextProperties().grid * 2
+    getTextProps().grid * 2
   }px`
 }
 
 let updateSample = () => {
-  let textProperties = getTextProperties()
-  let lineHeight = calculateLineHeight(textProperties)
+  let textProps = getTextProps()
+  let lineHeight = calculateLineHeight(textProps)
 
-  sample.style.top = `0`
-
-  sample.style.fontSize = `${textProperties.size}px`
+  sample.style.fontSize = `${textProps.size}px`
   sample.style.lineHeight = `${lineHeight}px`
-  sample.style.top = `-${calculateBaselineOffset()}px`
+  sample.style.marginTop = `calc(-${calculateBaselineOffset()}px + ${lineHeight}px - ${textProps.grid}px)`
 
   generatedLineHeight.innerHTML = lineHeight
 
@@ -106,4 +106,4 @@ baselineGridRange.addEventListener("input", function (e) {
   updateSample(this.value)
 })
 
-setTextProperties(24, 1.3, 8)
+setTextProps(24, 1.3, 8)
