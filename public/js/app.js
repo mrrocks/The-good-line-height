@@ -42,12 +42,7 @@ let calculateBaselineOffset = () => {
   proxy.innerText = "A"
   sample.insertBefore(proxy, sample.firstChild)
 
-  let textProps = getTextProps()
-  let lineHeight = calculateLineHeight(textProps)
-
-  let offset = Math.round(
-    proxy.getBoundingClientRect().bottom -
-    sample.offsetTop)
+  let offset = proxy.getBoundingClientRect().bottom - sample.offsetTop
 
   proxy.remove()
 
@@ -72,7 +67,11 @@ let updateSample = () => {
 
   sample.style.fontSize = `${textProps.size}px`
   sample.style.lineHeight = `${lineHeight}px`
-  sample.style.marginTop = `calc(-${calculateBaselineOffset()}px + ${lineHeight}px - ${textProps.grid}px)`
+
+  let adjustedOffset =
+    -Math.abs(calculateBaselineOffset()) + lineHeight - textProps.grid
+
+  sample.style.marginTop = `${adjustedOffset}px`
 
   generatedLineHeight.innerHTML = lineHeight
 

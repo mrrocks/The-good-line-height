@@ -1,129 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        padding: 32px;
-        font-family: "Roboto", sans-serif;
-      }
-      .controls {
-        height: 240px;
-      }
-      input[type="number"] {
-        width: 60px;
-      }
-      .baseline-grid-background {
-        overflow: hidden;
-        height: 300px;
-        background: linear-gradient(
-          to bottom,
-          #e5e5e5,
-          #e5e5e5 50%,
-          #fff 50%,
-          #fff
-        );
-        background-size: 100% 16px;
-      }
 
-      .baseline-grid-visibility {
-      }
-    </style>
-    <title>Baseline based line-height calculator</title>
-  </head>
-  <body>
-    <div class="controls">
-      <h1>Baseline based line-height calculator</h1>
-      <div>
-        Text size
-        <input type="range" id="textSizeRange" min="10" max="80" />
-        <input type="number" id="textSizeInput" />
-      </div>
-      <div>
-        Line height ratio
-        <input
-          type="range"
-          id="lineHeightRatioRange"
-          step="0.1"
-          min="1"
-          max="2"
-          value="1.3"
-        />
-        <input type="number" step="0.1" id="lineHeightRatioInput" />
-      </div>
-      <div>
-        <label for="lineHeight">Baseline grid</label>
-        <input type="range" id="baselineGridRange" min="2" max="16" />
-        <input type="number" id="baselineGridInput" min="2" max="16" />
-      </div>
-      <h3>
-        Baseline based line-height: <span id="generatedLineHeight"></span>
-      </h3>
-    </div>
-    <a href="" class="baseline-grid-visibility" id="baselineGridVisibility"
-      >Hide baseline grid</a
-    >
-    <div class="baseline-grid-background" id="baselineGridBackground">
-      <div id="sample">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id risus
-          quis nibh hendrerit condimentum. Nullam nec felis venenatis, convallis
-          dui id, ullamcorper lectus. Curabitur vestibulum eros eros, in finibus
-          enim laoreet in. In hac habitasse platea dictumst. Pellentesque
-          luctus, nunc id pellentesque molestie, metus felis congue magna, quis
-          venenatis purus tellus nec sapien. Cras id viverra nulla, vel
-          efficitur est. Sed mollis tellus enim, a feugiat tortor fermentum in.
-          In dapibus mi at dolor feugiat, a semper erat malesuada. Praesent
-          iaculis est metus, quis mollis felis varius eget. Donec tincidunt nibh
-          erat, vel congue mauris laoreet sit amet. Maecenas semper sem sed
-          libero consectetur, vitae interdum purus tincidunt. In ultricies, erat
-          id luctus accumsan, arcu augue eleifend neque, sit amet faucibus mi
-          diam a nisl. Aliquam laoreet, urna quis iaculis euismod, lorem tortor
-          fringilla risus, eu feugiat justo risus non orci. Quisque malesuada
-          molestie urna, sit amet aliquet metus tempus non. Quisque tincidunt
-          nisi et commodo hendrerit.
-          <br><br>
-          Aliquam vitae porta quam. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Nullam mauris lorem, condimentum vitae neque a,
-          tempor varius lorem. Phasellus elementum blandit tempus. Curabitur
-          lectus sapien, ultrices vel fermentum vel, gravida vitae lacus.
-          Phasellus pulvinar congue erat, sit amet ultricies tellus pellentesque
-          non. Vestibulum suscipit ante id venenatis venenatis. Sed ligula nibh,
-          viverra at est ac, vestibulum tempus tortor. Nulla commodo arcu dui,
-          nec rhoncus justo mattis sed. Etiam pharetra libero sit amet ligula
-          placerat, sit amet malesuada sapien facilisis. Fusce ornare sed tellus
-          eget porta. Sed ac tempor tortor. Cras porta lorem eget condimentum
-          aliquam.
-          <br><br>
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-          posuere cubilia curae; Curabitur vel mollis nisi. Nullam aliquam
-          accumsan tincidunt. Vestibulum fermentum pellentesque lectus id
-          posuere. Mauris a tristique sapien. Suspendisse pharetra massa eu
-          sagittis porttitor. Nullam eu dolor et diam posuere porta. Ut leo
-          eros, sodales sit amet mi ultricies, pharetra bibendum quam. Ut
-          ultricies eget augue a hendrerit. Vivamus iaculis maximus maximus.
-          Morbi ornare quam vel leo maximus vestibulum.
-          <br><br>
-          Vivamus mollis sollicitudin sapien et bibendum. Interdum et malesuada
-          fames ac ante ipsum primis in faucibus. Vivamus lacinia auctor elit,
-          vitae tempus lacus aliquet ut. In finibus non lacus vel venenatis. In
-          interdum, eros at semper aliquam, massa est eleifend nisi, in
-          pellentesque nibh felis at mauris. Morbi facilisis eget orci sed
-          porttitor. Vivamus egestas vehicula justo id lobortis. Curabitur vel
-          tortor non orci gravida ornare non a urna. Nulla eleifend non mauris
-          sed ornare. In luctus lorem vitae ante vulputate, sit amet volutpat
-          neque viverra. Quisque eget lorem dictum, suscipit quam nec, bibendum
-          lacus. Donec pulvinar iaculis lectus in faucibus. Proin ante arcu,
-          sagittis non viverra quis, eleifend vitae tortor. Cras scelerisque
-          odio nisi, ac ornare sapien euismod vel. Etiam fermentum et ante non
-          pretium.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="public/css/main.css" />
+  <title>Baseline based line-height calculator</title>
+</head>
+
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="header__title">
+        The <span class="colorized">good</span> line-height
+      </h1>
+      <h2 class="header__subtitle">
+        <p>
+          Have you ever needed to create a type scale following an 8 point
+          baseline grid, or really any grid, and had to spend extra time
+          figuring out what should be the right line-height for every text
+          size in the scale?
         </p>
+        <p>
+          Worry no more! The good line-height calculates for you the proper
+          line-height so it always fits your baseline grid!
+        </p>
+      </h2>
+      <a href="" class="action action--lights">Turn off the lights</a>
+    </header>
+    <div class="content">
+      <div class="controls">
+        <div>
+          Text size
+          <input type="range" id="textSizeRange" min="10" max="80" />
+          <input type="number" id="textSizeInput" />
+        </div>
+        <div>
+          Line height ratio
+          <input type="range" id="lineHeightRatioRange" step="0.1" min="1" max="2" value="1.3" />
+          <input type="number" step="0.1" id="lineHeightRatioInput" />
+        </div>
+        <div>
+          <label for="lineHeight">Baseline grid</label>
+          <input type="range" id="baselineGridRange" min="2" max="16" />
+          <input type="number" id="baselineGridInput" min="2" max="16" />
+        </div>
+      </div>
+      <div class="result">
+        <h3>
+          Baseline based line-height: <span id="generatedLineHeight"></span>
+        </h3>
+        <a href="" class="action action--toggle-visibility" id="baselineGridVisibility">Hide baseline grid</a>
+        <div class="baseline-grid-background" id="baselineGridBackground">
+          <div id="sample">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id
+            risus quis nibh hendrerit condimentum. Nullam nec felis venenatis,
+            convallis dui id, ullamcorper lectus. Curabitur vestibulum eros
+            eros, in finibus enim laoreet in. In hac habitasse platea
+            dictumst. Pellentesque luctus, nunc id pellentesque molestie,
+            metus felis congue magna, quis venenatis purus tellus nec sapien.
+            Cras id viverra nulla, vel efficitur est. Sed mollis tellus enim,
+            a feugiat tortor fermentum in. In dapibus mi at dolor feugiat, a
+            semper erat malesuada. Praesent iaculis est metus, quis mollis
+            felis varius eget. Donec tincidunt nibh erat, vel congue mauris
+            laoreet sit amet. Maecenas semper sem sed libero consectetur,
+            vitae interdum purus tincidunt. In ultricies, erat id luctus
+            accumsan, arcu augue eleifend neque, sit amet faucibus mi diam a
+            nisl. Aliquam laoreet, urna quis iaculis euismod, lorem tortor
+            fringilla risus, eu feugiat justo risus non orci. Quisque
+            malesuada molestie urna, sit amet aliquet metus tempus non.
+            Quisque tincidunt nisi et commodo hendrerit.<br /><br />
+            Aliquam vitae porta quam. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Nullam mauris lorem, condimentum vitae neque a,
+            tempor varius lorem. Phasellus elementum blandit tempus. Curabitur
+            lectus sapien, ultrices vel fermentum vel, gravida vitae lacus.
+            Phasellus pulvinar congue erat, sit amet ultricies tellus
+            pellentesque non. Vestibulum suscipit ante id venenatis venenatis.
+            Sed ligula nibh, viverra at est ac, vestibulum tempus tortor.
+            Nulla commodo arcu dui, nec rhoncus justo mattis sed. Etiam
+            pharetra libero sit amet ligula placerat, sit amet malesuada
+            sapien facilisis. Fusce ornare sed tellus eget porta. Sed ac
+            tempor tortor. Cras porta lorem eget condimentum aliquam.<br /><br />
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            posuere cubilia curae; Curabitur vel mollis nisi. Nullam aliquam
+            accumsan tincidunt. Vestibulum fermentum pellentesque lectus id
+            posuere. Mauris a tristique sapien. Suspendisse pharetra massa eu
+            sagittis porttitor. Nullam eu dolor et diam posuere porta. Ut leo
+            eros, sodales sit amet mi ultricies, pharetra bibendum quam. Ut
+            ultricies eget augue a hendrerit. Vivamus iaculis maximus maximus.
+            Morbi ornare quam vel leo maximus vestibulum.<br /><br />
+            Vivamus mollis sollicitudin sapien et bibendum. Interdum et
+            malesuada fames ac ante ipsum primis in faucibus. Vivamus lacinia
+            auctor elit, vitae tempus lacus aliquet ut. In finibus non lacus
+            vel venenatis. In interdum, eros at semper aliquam, massa est
+            eleifend nisi, in pellentesque nibh felis at mauris. Morbi
+            facilisis eget orci sed porttitor. Vivamus egestas vehicula justo
+            id lobortis. Curabitur vel tortor non orci gravida ornare non a
+            urna. Nulla eleifend non mauris sed ornare. In luctus lorem vitae
+            ante vulputate, sit amet volutpat neque viverra. Quisque eget
+            lorem dictum, suscipit quam nec, bibendum lacus. Donec pulvinar
+            iaculis lectus in faucibus. Proin ante arcu, sagittis non viverra
+            quis, eleifend vitae tortor. Cras scelerisque odio nisi, ac ornare
+            sapien euismod vel. Etiam fermentum et ante non pretium.
+          </div>
+        </div>
       </div>
     </div>
-    <script type="text/javascript" src="logic.js"></script>
-  </body>
+  </div>
+  <script type="text/javascript" src="public/js/app.js"></script>
+</body>
+
 </html>
