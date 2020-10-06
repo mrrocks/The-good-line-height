@@ -43,7 +43,8 @@ body {
 }
 
 .action {
-  color: var(--color-accent); 
+  color: var(--color-accent);
+  text-decoration: none;
 }
 .action--lights{
   position: absolute;
