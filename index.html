@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="public/css/main.css" />
   <title>The good line-height</title>
 </head>
@@ -16,16 +16,8 @@
         The <span class="colorized">good</span> line-height
       </h1>
       <h2 class="header__subtitle">
-        <p>
-          Have you ever needed to create a type scale following an 8 point
-          baseline grid, or really any grid, and had to spend extra time
-          figuring out what should be the right line-height for every text
-          size in the scale?
-        </p>
-        <p>
-          Worry no more! The good line-height calculates for you the proper
-          line-height so it always fits your baseline grid!
-        </p>
+        <p>Have you ever needed to create a type scale following an 8 point baseline grid, or really any grid, and<br> had to spend extra time figuring out what should be the right line-height for every text size in the scale?</p>
+        <p>Worry no more! The <span class="colorized">good</span> line-height calculates the proper line-height so it always fits your baseline grid!</p>
       </h2>
       <a href="" class="action action--lights">Turn off the lights</a>
     </header>
@@ -33,32 +25,33 @@
       <div class="controls">
         <div class="control">
           <label class="control__label">Text size</label>
-          <p class="control__description">This is the <strong>key</strong>, given any text size it will calculate the <span class="colorized">good</span> line-height so every text sits on the baseline grid.</p>
-          <input class="control__range" type="number" id="textSizeInput" />
-          <input class="control__input" type="range" id="textSizeRange" min="10" max="80" />
+          <p class="control__description">This is the <strong>key</strong>, given any text size it will calculate the <span class="colorized">good</span> line-height so every text sits nicely on the baseline grid.</p>
+          <input class="control__input" type="number" id="textSizeInput" /><input class="control__range" type="range" id="textSizeRange" min="10" max="80" />
         </div>
         <div class="control">
           <label class="control__label">Multiplier</label>
           <p class="control__description">This will give you control over the approximate distance between lines. 1.3 is always a <span class="colorized">good</span> starting point!</p>
-          <input class="control__range" type="number" id="lineHeightRatioInput" step="0.1"/>
-          <input class="control__input" type="range" id="lineHeightRatioRange" step="0.1" min="1" max="2" value="1.3" />
+          <input class="control__input" type="number" id="lineHeightRatioInput" step="0.1"/><input class="control__range" type="range" id="lineHeightRatioRange" step="0.1" min="1" max="2" value="1.3" />
         </div>
         <div class="control">
-          <label class="control__label">Row's height</label>
-          <p class="control__description">8pt baseline grids are becoming the <span class="colorized">good</span> standard. But, don’t feel bad if you are more of a 10pt or even a 5pt person!</p>
-          <input class="control__range" type="number" id="baselineGridInput" min="2" max="16"/>
-          <input class="control__input" type="range" id="baselineGridRange" min="2" max="16" />
+          <label class="control__label">Rows height</label>
+          <p class="control__description">8pt baseline grids are becoming a <span class="colorized">good</span> standard. But, don’t feel bad if you are more of a 10pt or even a 5pt person!</p>
+          <input class="control__input" type="number" id="baselineGridInput" min="2" max="16"/><input class="control__range" type="range" id="baselineGridRange" min="2" max="16" />
         </div>
       </div>
       <div class="result">
-        <h3>The <span class="colorized">good</span> line-height is <span class="colorized" id="generatedLineHeight"></span></h3>
+        <h2 class="result__header">The <span class="colorized">good</span> line-height is <span class="colorized" id="generatedLineHeight"></span></h2>
         <a href="" class="action action--toggle-visibility" id="baselineGridVisibility">Hide baseline grid</a>
         <div class="baseline-grid-background" id="baselineGridBackground">
-          <div id="sample"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id risus quis nibh hendrerit condimentum. Nullam nec felis venenatis, convallis dui id, ullamcorper lectus. Curabitur vestibulum eros eros, in finibus enim laoreet in. In hac habitasse platea dictumst. Pellentesque luctus, nunc id pellentesque molestie, metus felis congue magna, quis venenatis purus tellus nec sapien. Cras id viverra nulla, vel efficitur est. Sed mollis tellus enim, a feugiat tortor fermentum in. In dapibus mi at dolor feugiat, a semper erat malesuada. Praesent iaculis est metus, quis mollis felis varius eget. Donec tincidunt nibh erat, vel congue mauris laoreet sit amet. Maecenas semper sem sed libero consectetur, vitae interdum purus tincidunt. In ultricies, erat id luctus accumsan, arcu augue eleifend neque, sit amet faucibus mi diam a nisl. Aliquam laoreet, urna quis iaculis euismod, lorem tortor fringilla risus, eu feugiat justo risus non orci. Quisque malesuada molestie urna, sit amet aliquet metus tempus non. Quisque tincidunt nisi et commodo hendrerit.<br /><br /> Aliquam vitae porta quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris lorem, condimentum vitae neque a, tempor varius lorem. Phasellus elementum blandit tempus. Curabitur lectus sapien, ultrices vel fermentum vel, gravida vitae lacus. Phasellus pulvinar congue erat, sit amet ultricies tellus pellentesque non. Vestibulum suscipit ante id venenatis venenatis. Sed ligula nibh, viverra at est ac, vestibulum tempus tortor. Nulla commodo arcu dui, nec rhoncus justo mattis sed. Etiam pharetra libero sit amet ligula placerat, sit amet malesuada sapien facilisis. Fusce ornare sed tellus eget porta. Sed ac tempor tortor. Cras porta lorem eget condimentum aliquam.<br /><br /> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur vel mollis nisi. Nullam aliquam accumsan tincidunt. Vestibulum fermentum pellentesque lectus id posuere. Mauris a tristique sapien. Suspendisse pharetra massa eu sagittis porttitor. Nullam eu dolor et diam posuere porta. Ut leo eros, sodales sit amet mi ultricies, pharetra bibendum quam. Ut ultricies eget augue a hendrerit. Vivamus iaculis maximus maximus. Morbi ornare quam vel leo maximus vestibulum.<br /><br /> Vivamus mollis sollicitudin sapien et bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus lacinia auctor elit, vitae tempus lacus aliquet ut. In finibus non lacus vel venenatis. In interdum, eros at semper aliquam, massa est eleifend nisi, in pellentesque nibh felis at mauris. Morbi facilisis eget orci sed porttitor. Vivamus egestas vehicula justo id lobortis. Curabitur vel tortor non orci gravida ornare non a urna. Nulla eleifend non mauris sed ornare. In luctus lorem vitae ante vulputate, sit amet volutpat neque viverra. Quisque eget lorem dictum, suscipit quam nec, bibendum lacus. Donec pulvinar iaculis lectus in faucibus. Proin ante arcu, sagittis non viverra quis, eleifend vitae tortor. Cras scelerisque odio nisi, ac ornare sapien euismod vel. Etiam fermentum et ante non pretium.
-          </div>
+          <div id="sample">The Lorem ipsum text is derived from sections 1.10.32 and 1.10.33 of Cicero's De finibus bonorum et malorum. The physical source may have been the 1914 Loeb Classical Library edition of De finibus, where the Latin text, presented on the left-hand (even) pages, breaks off on page 34 with "Neque porro quisquam est qui do-" and continues on page 36 with "lorem ipsum ...", suggesting that the galley type of that page was mixed up to make the dummy text seen today.<br><br>The discovery of the text's origin is attributed to Richard McClintock, a Latin scholar at Hampden–Sydney College. McClintock connected Lorem ipsum to Cicero's writing sometime before 1982 while searching for instances of the Latin word consectetur, which was rarely used in classical literature.[4] McClintock first published his discovery in a 1994 letter to the editor of Before & After magazine, contesting the editor's earlier claim that Lorem ipsum had no meaning.<br><br>The relevant section of Cicero as printed in the source is reproduced below with fragments used in Lorem ipsum underlined. Letters in brackets were added to Lorem ipsum and were not present in the source text:<br><br>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng]velit, sed quia non-numquam [do] eius modi tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum[d] exercitationem ullam corporis suscipitlaboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui inea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non-provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non-recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat…
+            
+            This is H. Rackham's translation as printed in the Loeb Classical Library edition with underlining added for the translation of the text found in the example of the Lorem ipsum[2]:
+            
+            [32] But I must explain to you how all this mistaken idea of denouncing of a pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? [33] On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammeled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse.</div>
         </div>
       </div>
     </div>
+    <footer class="footer">Made with care by Fran Pérez, <a href="" class="colorized">@mrrocks</a></div>
   </div>
   <script type="text/javascript" src="public/js/app.js"></script>
 </body>

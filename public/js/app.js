@@ -36,13 +36,24 @@ let setTextProps = (size, ratio, grid) => {
   updateSample(size)
 }
 
+const getOffsetRect = (el) => {
+  let rect = el.getBoundingClientRect()
+
+  let left = rect.left + window.pageXOffset
+  let top = rect.top + window.pageYOffset
+  let right = rect.right + window.pageXOffset
+  let bottom = rect.bottom + window.pageYOffset
+
+  return { left, top, right, bottom }
+}
+
 let calculateBaselineOffset = () => {
   let proxy = document.createElement("span")
   proxy.setAttribute("style", "font-size:0")
   proxy.innerText = "A"
   sample.insertBefore(proxy, sample.firstChild)
 
-  let offset = proxy.getBoundingClientRect().bottom - sample.offsetTop
+  let offset = getOffsetRect(proxy).bottom - getOffsetRect(sample).top
 
   proxy.remove()
 
@@ -105,4 +116,4 @@ baselineGridRange.addEventListener("input", function (e) {
   updateSample(this.value)
 })
 
-setTextProps(24, 1.3, 8)
+setTextProps(40, 1.3, 8)
