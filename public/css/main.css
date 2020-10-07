@@ -1,8 +1,6 @@
 @import "/public/css/reset.css";
 
 :root {
-  --color-accent-primary: rgba(51, 214, 255, 1);
-  --color-accent-secondary: rgb(196, 79, 235);
   --color-gray-darker: rgba(0, 0, 0, 0.9);
   --color-gray-medium: rgba(0, 0, 0, 0.7);
   --color-gray-light: rgba(0, 0, 0, 0.24);
@@ -12,6 +10,7 @@
   --color-baseline: var(--color-gray-lightest);
 
   --color-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  --gradient-animation: 40s infinite linear;
 }
 
 body {
@@ -77,7 +76,7 @@ body {
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-	animation: gradient 40s infinite linear;
+	animation: gradient var(--gradient-animation);
 }
 
 @keyframes gradient {
@@ -138,10 +137,17 @@ body {
   padding: 2px 4px 2px 8px;
 }
 
-  .control__input:focus {
-    border-color: var(--color-accent-primary);
-    outline: none;
-    animation: gradient-border 40s infinite linear;
+  .control__input:focus, .control__input:hover {
+    outline: 0;
+    border: 2px solid transparent;
+    background-image:
+    linear-gradient(white, white), var(--color-gradient);
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 400% 400%;
+    background-position: 0 0, 0 100%;
+    background-origin: padding-box, border-box;
+    animation: gradient-border var(--gradient-animation);
   }
 
 .control__range {
@@ -152,16 +158,15 @@ body {
   height: 2px;
   cursor: pointer;
   background: var(--color-gray-light);
-  background: #d3d3d3;
   outline: none;
   top: -4px;
   position: relative;
 }
 
-.control__range:focus {
+.control__range:focus, .control__range:hover {
   background: var(--color-gradient);
   background-size: 400% 400%;
-  animation: gradient 40s infinite linear;
+  animation: gradient var(--gradient-animation);
 }
 
 .control__range::-webkit-slider-thumb {
@@ -232,6 +237,12 @@ body {
 
 .footer {
   color: var(--color-gray-medium);
+}
+.footer .footer__heart {
+  margin-right: 8px;
+}
+.footer .footer__divider {
+  color: var(--color-gray-light);
 }
 .footer a {
   font-weight: 500;
