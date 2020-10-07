@@ -9,8 +9,19 @@
 
   --color-baseline: var(--color-gray-lightest);
 
-  --color-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  --gradient-animation: 40s infinite linear;
+  --color-gradient-1: #FF5A98;
+  --color-gradient-2: #7638F4;
+  --color-gradient-3: #11A3D2;
+
+  --color-gradient: linear-gradient(45deg,
+    var(--color-gradient-1),
+    var(--color-gradient-2),
+    var(--color-gradient-3),
+    var(--color-gradient-1),
+    var(--color-gradient-2),
+    var(--color-gradient-3));
+
+  --gradient-animation: 20s linear infinite alternate;
 }
 
 body {
@@ -28,7 +39,7 @@ body {
   padding-bottom: 45px;
   border-bottom: 2px solid var(--color-gray-lightest);
   position: relative;
-  margin-bottom: 47px;
+  margin-bottom: 41px;
 }
 
 .header__title {
@@ -50,44 +61,78 @@ body {
 
 .action {
   text-decoration: none;
-  position: absolute;
-  top: 0;
-  right: 0;
+  padding-left: 32px;
+  position: relative;
 }
-.action::before {
-  content: "";
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  margin-right: 8px;
-}
+  .action:hover {
+    text-decoration: underline;
+  }
 
-.action--lights {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.action--lights::before {
-  background-image: url("/public/assets/ic_moon.svg");
-}
+  .action::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    position: absolute;
+    left: 0;
+    background: var(--color-gradient);
+    background-size: 800% 800%;
+    animation: gradient var(--gradient-animation);
+  }
+
+  .action::after {
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 24px;
+    left: 0; 
+  }
+
+    .action--lights {
+      position: absolute;
+      top: 31px;
+      right: 0;
+    }
+      .action--lights::after {
+        background-image: url("/public/assets/ic_moon.svg");
+      }
+
+    .action--toggle-visibility {
+      position: absolute;
+      top: 6px;
+      right: 0;
+    }
+      .action--toggle-visibility::after {
+        background-image: url("/public/assets/ic_baseline_off.svg");
+      }
 
 .colorized {
   background: var(--color-gradient);
-  background-size: 400% 400%;
+  background-size: 800% 800%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 	animation: gradient var(--gradient-animation);
 }
 
+  .colorized--icon {
+    display: inline-block;
+    background: var(--color-gradient);
+    background-size: 800% 800%;
+    animation: gradient var(--gradient-animation);
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
 @keyframes gradient {
 	0% {
-		background-position: 0% 50%;
+		background-position: 0%;
 	}
 	50% {
-		background-position: 100% 50%;
+		background-position: 100%;
 	}
 	100% {
-		background-position: 0% 50%;
+		background-position: 0%;
 	}
 }
 
@@ -113,6 +158,7 @@ body {
 .controls {
   width: 386px;
   margin-right: 106px;
+  margin-top: 7px;
 }
 
 .control:not(:last-child) {
@@ -142,9 +188,8 @@ body {
     border: 2px solid transparent;
     background-image:
     linear-gradient(white, white), var(--color-gradient);
-
     background-repeat: no-repeat;
-    background-size: 100% 100%, 400% 400%;
+    background-size: 100% 100%, 800% 800%;
     background-position: 0 0, 0 100%;
     background-origin: padding-box, border-box;
     animation: gradient-border var(--gradient-animation);
