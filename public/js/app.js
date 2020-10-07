@@ -1,5 +1,6 @@
 const sample = document.getElementById("sample")
 const baselineGridBackground = document.getElementById("baselineGridBackground")
+const baselineGridVisibility = document.getElementById("baselineGridVisibility")
 
 const textSizeInput = document.getElementById("textSizeInput")
 const textSizeRange = document.getElementById("textSizeRange")
@@ -89,6 +90,7 @@ let updateSample = () => {
   renderBaselineGrid()
 }
 
+
 textSizeInput.addEventListener("input", function (e) {
   textSizeRange.value = this.value
   updateSample(this.value)
@@ -115,5 +117,20 @@ baselineGridRange.addEventListener("input", function (e) {
   baselineGridInput.value = this.value
   updateSample(this.value)
 })
+
+let isVisible = true
+
+let toggleBaselineVisibility = () => {
+  
+  baselineGridBackground.classList.toggle("baseline-grid-background--not-visible");
+
+  if (isVisible === true) {
+    baselineGridVisibility.innerText = "Show baseline grid"
+    isVisible = false
+  } else {
+    baselineGridVisibility.innerText = "Hide baseline grid"
+    isVisible = true
+  }
+}
 
 setTextProps(40, 1.3, 8)

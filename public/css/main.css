@@ -63,7 +63,6 @@ body {
   text-decoration: none;
   padding-left: 32px;
   position: relative;
-  font-weight: 500;
 }
   .action:hover {
     text-decoration: underline;
@@ -278,8 +277,9 @@ body {
   color: var(--color-gray-darker);
 }
 
-.baseline-grid-visibility {
-}
+  .baseline-grid-background--not-visible {
+    background: none;
+  }
 
 .footer {
   color: var(--color-gray-medium);
