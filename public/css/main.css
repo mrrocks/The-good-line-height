@@ -83,9 +83,6 @@ body {
   position: relative;
   font-weight: 500;
 }
-  .action:hover {
-    text-decoration: underline;
-  }
 
   .action::before {
     content: "";
@@ -147,6 +144,10 @@ body {
   -webkit-text-fill-color: transparent;
 	animation: gradient var(--gradient-animation);
 }
+  .colorized[name="word"] {
+    cursor: pointer;
+    user-select: none;
+  }
 
   .colorized--icon {
     display: inline-block;

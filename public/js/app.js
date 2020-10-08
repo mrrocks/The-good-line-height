@@ -153,14 +153,6 @@ if (localTheme){
   currentTheme = isDarkTheme.matches ? "dark" : "light"
 }
 
-
-
-if (currentTheme == "dark") {
-  bodyClasses.add("dark-theme")
-} else if (currentTheme == "light") {
-  bodyClasses.add("light-theme")
-}
-
 let switchToLightTheme = () => {
   currentTheme = "light"
 
@@ -193,6 +185,36 @@ toggleLightsAction.addEventListener("click", function (e) {
   e.preventDefault()
   toggleLights()
 })
+
+if (currentTheme == "dark") {
+  bodyClasses.add("dark-theme")
+  switchToDarkTheme()
+} else if (currentTheme == "light") {
+  bodyClasses.add("light-theme")
+  switchToLightTheme()
+}
+
+// Cicling "good" words
+
+const words = ["phenomenal", "fantastic", "remarkable", "fabolous", "prodigious", "astonishing", "good"]
+
+const goodWords = document.getElementsByName("word")
+
+let count = 0
+
+let cycleWords = () => {
+  if (count == goodWords.length + 1) { count = 0 }
+  
+  for (var word of goodWords) {
+    word.innerText = words[count]
+  }
+
+  count ++
+}
+
+for (var word of goodWords) {
+  word.addEventListener("click", cycleWords)
+}
 
 // Init
 
