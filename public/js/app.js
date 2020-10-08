@@ -121,6 +121,8 @@ baselineGridRange.addEventListener("input", function (e) {
   updateSample(this.value)
 })
 
+// Baseline grid visibility
+
 let toggleBaselineVisibility = () => {
   baselineGridBackground.classList.toggle(
     "baseline-grid-background--not-visible"
@@ -137,42 +139,45 @@ let toggleBaselineVisibility = () => {
   }
 }
 
+setTextProps(40, 1.3, 8)
+
+// Color themes
+
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
-const currentTheme = localStorage.getItem("theme")
-
-
-let turnLightOn = () => {
-  document.body.classList.toggle("light-theme")
-  toggleLightsAction.innerText = "Turn off the lights"
-  toggleLightsAction.classList.remove("action--lights--on")
-}
-
-let turnLightOff = () => {
-  document.body.classList.toggle("dark-theme")
-  toggleLightsAction.innerText = "Turn on the lights"
-  toggleLightsAction.classList.add("action--lights--on")
-}
-
+let currentTheme = localStorage.getItem("theme")
+let bodyClasses = document.body.classList
 
 if (currentTheme == "dark") {
-  turnLightOff()
+  document.body.classList.add("dark-theme")
 } else if (currentTheme == "light") {
-  turnLightOn()
+  document.body.classList.add("light-theme")
+}
+
+let switchToLightTheme = () => {
+  currentTheme = "light"
+
+  bodyClasses.replace("dark-theme", "light-theme")
+  toggleLightsAction.innerText = "Turn off the lights"
+  toggleLightsAction.classList.remove("action--lights--on")
+
+  localStorage.setItem("theme", currentTheme)
+}
+
+let switchToDarkTheme = () => {
+  currentTheme = "dark"
+
+  bodyClasses.replace("light-theme", "dark-theme")
+  toggleLightsAction.innerText = "Turn on the lights"
+  toggleLightsAction.classList.add("action--lights--on")
+
+  localStorage.setItem("theme", currentTheme)
 }
 
 let toggleLights = () => {
-  if (prefersDarkScheme.matches) {
-    turnLightOn()
-    var theme = document.body.classList.contains("light-theme")
-      ? "light"
-      : "dark"
-  } else {
-    turnLightOff()
-    var theme = document.body.classList.contains("dark-theme")
-      ? "dark"
-      : "light"
+  if (currentTheme == "dark") {
+    switchToLightTheme()
+  } else if (currentTheme == "light") {
+    switchToDarkTheme()
   }
-  localStorage.setItem("theme", theme)
 }
 
-setTextProps(40, 1.3, 8)
