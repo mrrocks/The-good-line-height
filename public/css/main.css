@@ -1,6 +1,8 @@
 @import "/public/css/reset.css";
 
 :root {
+  --color-white: rgba(255, 255, 255, 1);
+  
   --color-gray-darker: rgba(0, 0, 0, 0.9);
   --color-gray-medium: rgba(0, 0, 0, 0.7);
   --color-gray-light: rgba(0, 0, 0, 0.24);
@@ -24,6 +26,24 @@
   --gradient-animation: 20s linear infinite alternate;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-white: #212224;
+
+    --color-gray-darker: rgba(255, 255, 255, 1);
+    --color-gray-medium: rgba(255, 255, 255, 0.8);
+    --color-gray-light: rgba(255, 255, 255, 0.24);
+    --color-gray-lighter: rgba(255, 255, 255, 0.08);
+    --color-gray-lightest: rgba(255, 255, 255, 0.06);
+  
+    --color-baseline: var(--color-gray-lightest);
+  }
+  
+  body {
+    background-color: #212224;
+  }
+}
+
 body {
   font: 14px/24px "Roboto", sans-serif;
   color: var(--color-gray-medium);
@@ -45,7 +65,7 @@ body {
 .header__title {
   font-size: 48px;
   line-height: 64px;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 25px;
   color: var(--color-gray-darker);
 }
@@ -63,6 +83,7 @@ body {
   text-decoration: none;
   padding-left: 32px;
   position: relative;
+  font-weight: 500;
 }
   .action:hover {
     text-decoration: underline;
@@ -94,7 +115,11 @@ body {
       right: 0;
     }
       .action--lights::after {
-        background-image: url("/public/assets/ic_moon.svg");
+        background-image: url("/public/assets/ic_theme.svg");
+      }
+
+      .action--lights--on::after {
+        background-position-x: 24px;
       }
 
     .action--toggle-visibility {
@@ -103,7 +128,11 @@ body {
       right: 0;
     }
       .action--toggle-visibility::after {
-        background-image: url("/public/assets/ic_baseline_off.svg");
+        background-image: url("/public/assets/ic_baseline.svg");
+      }
+
+      .action--toggle-visibility--show::after {
+        background-position-x: 24px;
       }
 
 .colorized {
@@ -187,7 +216,7 @@ body {
     outline: 0;
     border: 2px solid transparent;
     background-image:
-    linear-gradient(white, white), var(--color-gradient);
+    linear-gradient(var(--color-white), var(--color-white)), var(--color-gradient);
     background-repeat: no-repeat;
     background-size: 100% 100%, 800% 800%;
     background-position: 0 0, 0 100%;
@@ -269,8 +298,8 @@ body {
     to bottom,
     var(--color-baseline),
     var(--color-baseline) 50%,
-    #fff 50%,
-    #fff
+    var(--color-white) 50%,
+    var(--color-white)
   );
   background-size: 100% 16px;
   font-family: "Roboto Slab", serif;

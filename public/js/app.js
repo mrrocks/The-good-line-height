@@ -1,6 +1,7 @@
-const sample = document.getElementById("sample")
+
 const baselineGridBackground = document.getElementById("baselineGridBackground")
 const baselineGridVisibility = document.getElementById("baselineGridVisibility")
+const toggleLightsAction = document.getElementById("toggleLights")
 
 const textSizeInput = document.getElementById("textSizeInput")
 const textSizeRange = document.getElementById("textSizeRange")
@@ -12,6 +13,8 @@ const baselineGridInput = document.getElementById("baselineGridInput")
 const baselineGridRange = document.getElementById("baselineGridRange")
 
 const generatedLineHeight = document.getElementById("generatedLineHeight")
+
+const sample = document.getElementById("sample")
 
 let getTextProps = () => {
   size = Number(textSizeInput.value)
@@ -118,19 +121,59 @@ baselineGridRange.addEventListener("input", function (e) {
   updateSample(this.value)
 })
 
-let isVisible = true
+let gridIsVisible = true
+let lightsAreOn = true
 
 let toggleBaselineVisibility = () => {
   
-  baselineGridBackground.classList.toggle("baseline-grid-background--not-visible");
+  baselineGridBackground.classList.toggle("baseline-grid-background--not-visible")
 
-  if (isVisible === true) {
+  if (gridIsVisible === true) {
     baselineGridVisibility.innerText = "Show baseline grid"
-    isVisible = false
+    baselineGridVisibility.classList.add("action--toggle-visibility--show")
+    gridIsVisible = false
   } else {
     baselineGridVisibility.innerText = "Hide baseline grid"
-    isVisible = true
+    baselineGridVisibility.classList.remove("action--toggle-visibility--show")
+    gridIsVisible = true
   }
+}
+
+
+
+const btn = toggleLightsAction
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme == "dark") {
+  document.body.classList.toggle("dark-theme");
+} else if (currentTheme == "light") {
+  document.body.classList.toggle("light-theme");
+}
+
+let toggleLights = () => {
+  if (lightsAreOn === true) {
+    toggleLightsAction.innerText = "Turn on the lights"
+    toggleLightsAction.classList.add("action--lights--on")
+    lightsAreOn = false
+  } else {
+    toggleLightsAction.innerText = "Turn off the lights"
+    toggleLightsAction.classList.remove("action--lights--on")
+    lightsAreOn = true
+  }
+
+  if (prefersDarkScheme.matches) {
+    document.body.classList.toggle("light-theme");
+    var theme = document.body.classList.contains("light-theme")
+      ? "light"
+      : "dark";
+  } else {
+    document.body.classList.toggle("dark-theme");
+    var theme = document.body.classList.contains("dark-theme")
+      ? "dark"
+      : "light";
+  }
+  localStorage.setItem("theme", theme);
 }
 
 setTextProps(40, 1.3, 8)
