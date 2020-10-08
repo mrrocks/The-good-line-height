@@ -141,17 +141,19 @@ let toggleBaselineVisibility = () => {
 
 // Color themes
 
-const isDarkTheme = window.matchMedia("(prefers-color-scheme: light)")
+const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)")
 
 let localTheme = localStorage.getItem("theme")
 let bodyClasses = document.body.classList
-let currentTheme
+let currentThemes
 
 if (localTheme){
   currentTheme = localTheme
 } else {
   currentTheme = isDarkTheme.matches ? "dark" : "light"
 }
+
+
 
 if (currentTheme == "dark") {
   bodyClasses.add("dark-theme")
