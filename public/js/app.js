@@ -179,6 +179,11 @@ let toggleLights = () => {
   }
 }
 
+toggleLightsAction.addEventListener("click", function (e) {
+  e.preventDefault()
+  toggleLights()
+})
+
 // Init
 
 setTextProps(40, 1.3, 8)
