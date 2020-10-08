@@ -319,12 +319,42 @@ body {
 
 .footer {
   color: var(--color-gray-medium);
+  vertical-align: middle;
+  padding-left: 32px;
+  position: relative;
 }
-.footer .footer__heart {
-  margin-right: 8px;
-}
+  .footer::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    left: 0;
+    background: var(--color-gradient);
+    background-size: 800% 800%;
+    animation: gradient var(--gradient-animation);
+  }
+
+  .footer::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    left: 0;
+    top: 0;
+  }
+    .light-theme .footer::after {
+      background-image: url("../assets/ic_heart-light.svg");
+    }
+
+    .dark-theme .footer::after {
+      background-image: url("../assets/ic_heart-dark.svg");
+    }
+  
 .footer .footer__divider {
   color: var(--color-gray-light);
+  margin: 0 4px;
 }
 .footer a {
   font-weight: 500;
