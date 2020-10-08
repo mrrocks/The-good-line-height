@@ -214,7 +214,7 @@ body {
 .control__input {
   border: 2px solid var(--color-gray-darker);
   width: 56px;
-  padding: 2px 4px 2px 8px;
+  padding: 2px 2px 2px 8px;
   color: var(--color-gray-darker);
   background-color: transparent;
 }
