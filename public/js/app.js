@@ -150,7 +150,7 @@ let currentTheme
 if (localTheme){
   currentTheme = localTheme
 } else {
-  currentTheme = isDarkTheme.matches ? "light" : "dark"
+  currentTheme = isDarkTheme.matches ? "dark" : "light"
 }
 
 if (currentTheme == "dark") {
