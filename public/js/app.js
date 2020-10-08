@@ -139,7 +139,6 @@ let toggleBaselineVisibility = () => {
   }
 }
 
-setTextProps(40, 1.3, 8)
 
 // Color themes
 
@@ -180,4 +179,9 @@ let toggleLights = () => {
     switchToDarkTheme()
   }
 }
+
+// Init
+
+
+setTextProps(40, 1.3, 8)
 
