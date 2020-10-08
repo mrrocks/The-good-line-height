@@ -129,11 +129,11 @@ let toggleBaselineVisibility = () => {
   )
 
   if (gridIsVisible === true) {
-    baselineGridVisibility.innerText = "Show baseline grid"
+    baselineGridVisibility.innerText = "Show grid"
     baselineGridVisibility.classList.add("action--toggle-visibility--show")
     gridIsVisible = false
   } else {
-    baselineGridVisibility.innerText = "Hide baseline grid"
+    baselineGridVisibility.innerText = "Hide grid"
     baselineGridVisibility.classList.remove("action--toggle-visibility--show")
     gridIsVisible = true
   }
