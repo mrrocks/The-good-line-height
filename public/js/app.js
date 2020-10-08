@@ -1,4 +1,3 @@
-
 const baselineGridBackground = document.getElementById("baselineGridBackground")
 const baselineGridVisibility = document.getElementById("baselineGridVisibility")
 const toggleLightsAction = document.getElementById("toggleLights")
@@ -15,6 +14,8 @@ const baselineGridRange = document.getElementById("baselineGridRange")
 const generatedLineHeight = document.getElementById("generatedLineHeight")
 
 const sample = document.getElementById("sample")
+
+let gridIsVisible = true
 
 let getTextProps = () => {
   size = Number(textSizeInput.value)
@@ -93,7 +94,6 @@ let updateSample = () => {
   renderBaselineGrid()
 }
 
-
 textSizeInput.addEventListener("input", function (e) {
   textSizeRange.value = this.value
   updateSample(this.value)
@@ -121,12 +121,10 @@ baselineGridRange.addEventListener("input", function (e) {
   updateSample(this.value)
 })
 
-let gridIsVisible = true
-let lightsAreOn = true
-
 let toggleBaselineVisibility = () => {
-  
-  baselineGridBackground.classList.toggle("baseline-grid-background--not-visible")
+  baselineGridBackground.classList.toggle(
+    "baseline-grid-background--not-visible"
+  )
 
   if (gridIsVisible === true) {
     baselineGridVisibility.innerText = "Show baseline grid"
@@ -139,41 +137,42 @@ let toggleBaselineVisibility = () => {
   }
 }
 
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
+const currentTheme = localStorage.getItem("theme")
 
 
-const btn = toggleLightsAction
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+let turnLightOn = () => {
+  document.body.classList.toggle("light-theme")
+  toggleLightsAction.innerText = "Turn off the lights"
+  toggleLightsAction.classList.remove("action--lights--on")
+}
 
-const currentTheme = localStorage.getItem("theme");
+let turnLightOff = () => {
+  document.body.classList.toggle("dark-theme")
+  toggleLightsAction.innerText = "Turn on the lights"
+  toggleLightsAction.classList.add("action--lights--on")
+}
+
+
 if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
+  turnLightOff()
 } else if (currentTheme == "light") {
-  document.body.classList.toggle("light-theme");
+  turnLightOn()
 }
 
 let toggleLights = () => {
-  if (lightsAreOn === true) {
-    toggleLightsAction.innerText = "Turn on the lights"
-    toggleLightsAction.classList.add("action--lights--on")
-    lightsAreOn = false
-  } else {
-    toggleLightsAction.innerText = "Turn off the lights"
-    toggleLightsAction.classList.remove("action--lights--on")
-    lightsAreOn = true
-  }
-
   if (prefersDarkScheme.matches) {
-    document.body.classList.toggle("light-theme");
+    turnLightOn()
     var theme = document.body.classList.contains("light-theme")
       ? "light"
-      : "dark";
+      : "dark"
   } else {
-    document.body.classList.toggle("dark-theme");
+    turnLightOff()
     var theme = document.body.classList.contains("dark-theme")
       ? "dark"
-      : "light";
+      : "light"
   }
-  localStorage.setItem("theme", theme);
+  localStorage.setItem("theme", theme)
 }
 
 setTextProps(40, 1.3, 8)
