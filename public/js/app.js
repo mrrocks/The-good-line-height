@@ -121,63 +121,63 @@ baselineGridRange.addEventListener("input", function (e) {
   updateSample(this.value)
 })
 
-// // Baseline grid visibility
+// Baseline grid visibility
 
-// let toggleBaselineVisibility = () => {
-//   baselineGridBackground.classList.toggle(
-//     "baseline-grid-background--not-visible"
-//   )
+let toggleBaselineVisibility = () => {
+  baselineGridBackground.classList.toggle(
+    "baseline-grid-background--not-visible"
+  )
 
-//   if (gridIsVisible === true) {
-//     baselineGridVisibility.innerText = "Show baseline grid"
-//     baselineGridVisibility.classList.add("action--toggle-visibility--show")
-//     gridIsVisible = false
-//   } else {
-//     baselineGridVisibility.innerText = "Hide baseline grid"
-//     baselineGridVisibility.classList.remove("action--toggle-visibility--show")
-//     gridIsVisible = true
-//   }
-// }
+  if (gridIsVisible === true) {
+    baselineGridVisibility.innerText = "Show baseline grid"
+    baselineGridVisibility.classList.add("action--toggle-visibility--show")
+    gridIsVisible = false
+  } else {
+    baselineGridVisibility.innerText = "Hide baseline grid"
+    baselineGridVisibility.classList.remove("action--toggle-visibility--show")
+    gridIsVisible = true
+  }
+}
 
-// // Color themes
+// Color themes
 
-// const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
-// let currentTheme = localStorage.getItem("theme")
-// let bodyClasses = document.body.classList
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
+let currentTheme = localStorage.getItem("theme")
+let bodyClasses = document.body.classList
 
-// if (currentTheme == "dark") {
-//   document.body.classList.add("dark-theme")
-// } else if (currentTheme == "light") {
-//   document.body.classList.add("light-theme")
-// }
+if (currentTheme == "dark") {
+  document.body.classList.add("dark-theme")
+} else if (currentTheme == "light") {
+  document.body.classList.add("light-theme")
+}
 
-// let switchToLightTheme = () => {
-//   currentTheme = "light"
+let switchToLightTheme = () => {
+  currentTheme = "light"
 
-//   bodyClasses.replace("dark-theme", "light-theme")
-//   toggleLightsAction.innerText = "Turn off the lights"
-//   toggleLightsAction.classList.remove("action--lights--on")
+  bodyClasses.replace("dark-theme", "light-theme")
+  toggleLightsAction.innerText = "Turn off the lights"
+  toggleLightsAction.classList.remove("action--lights--on")
 
-//   localStorage.setItem("theme", currentTheme)
-// }
+  localStorage.setItem("theme", currentTheme)
+}
 
-// let switchToDarkTheme = () => {
-//   currentTheme = "dark"
+let switchToDarkTheme = () => {
+  currentTheme = "dark"
 
-//   bodyClasses.replace("light-theme", "dark-theme")
-//   toggleLightsAction.innerText = "Turn on the lights"
-//   toggleLightsAction.classList.add("action--lights--on")
+  bodyClasses.replace("light-theme", "dark-theme")
+  toggleLightsAction.innerText = "Turn on the lights"
+  toggleLightsAction.classList.add("action--lights--on")
 
-//   localStorage.setItem("theme", currentTheme)
-// }
+  localStorage.setItem("theme", currentTheme)
+}
 
-// let toggleLights = () => {
-//   if (currentTheme == "dark") {
-//     switchToLightTheme()
-//   } else if (currentTheme == "light") {
-//     switchToDarkTheme()
-//   }
-// }
+let toggleLights = () => {
+  if (currentTheme == "dark") {
+    switchToLightTheme()
+  } else if (currentTheme == "light") {
+    switchToDarkTheme()
+  }
+}
 
 // Init
 
