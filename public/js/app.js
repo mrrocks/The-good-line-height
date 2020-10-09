@@ -94,9 +94,10 @@ let setTextProps = (size, ratio, grid) => {
   updateSample(size)
 }
 
-document.fonts.onloadingdone = function (fontFaceSetEvent) {
+document.fonts.ready.then(() => {
   setTextProps(40, 1.3, 8)
-};
+})
+
 
 // setTextProps(40, 1.3, 8)
 
