@@ -102,7 +102,7 @@ var robotoSlab = new FontFace('Roboto Slab', 'url(public/fonts/RobotoSlab-Regula
 document.fonts.add(robotoSlab);
 
 robotoSlab.loaded.then(() => {
-  setTextProps(40, 1.3, 8)
+  setTextProps(38, 1.3, 8)
 })
 
 textSizeInput.addEventListener("input", function (e) {
@@ -213,7 +213,7 @@ const goodWords = document.getElementsByName("word")
 let count = 0
 
 let cycleWords = () => {
-  if (count == goodWords.length + 1) { count = 0 }
+  if (count == words.length) { count = 0 }
   
   for (var word of goodWords) {
     word.innerText = words[count]

@@ -24,7 +24,7 @@ body.dark-theme {
   --color-white: #212224;
 
   --color-gray-darker: rgba(255, 255, 255, 1);
-  --color-gray-medium: rgba(255, 255, 255, 0.8);
+  --color-gray-medium: rgba(255, 255, 255, 0.7);
   --color-gray-light: rgba(255, 255, 255, 0.24);
   --color-gray-lighter: rgba(255, 255, 255, 0.08);
   --color-gray-lightest: rgba(255, 255, 255, 0.06);
@@ -52,7 +52,7 @@ body {
 }
 
 .app {
-  width: 960px;
+  width: 912px;
   margin: 52px auto;
 }
 
@@ -192,8 +192,7 @@ body {
 }
 
 .controls {
-  width: 386px;
-  margin-right: 106px;
+  width: 352px;
   margin-top: 6px;
 }
 
@@ -252,7 +251,7 @@ body {
 .control__range {
   -webkit-appearance: none;
   margin: 0 0 0 24px;
-  width: 312px;
+  width: 278px;
   height: 2px;
   cursor: pointer;
   background: var(--color-gray-light);
@@ -304,8 +303,9 @@ body {
 }
 
 .result {
-  width: 468px;
+  width: 512px;
   position: relative;
+  margin-left: 48px;
 }
 
 .result__header {
@@ -329,6 +329,7 @@ body {
   background-size: 100% 16px;
   font-family: "Roboto Slab", serif;
   color: var(--color-gray-darker);
+  /* padding: 0 4px 0 0; */
 }
 
   .baseline-grid-background--not-visible {

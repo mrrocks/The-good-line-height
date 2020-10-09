@@ -49,7 +49,7 @@
       </h1>
       <h2 class="header__subtitle">
         <p>Have you ever needed to create a type scale following an 8 point baseline grid, or really any grid, and had to spend extra time figuring out what should be the right line height for every text size in the scale?</p>
-        <p>No worries! The <span class="colorized" name="word">good</span> line height calculates the proper line height so it always fits your baseline grid!</p>
+        <p>No worries! The <span class="colorized" name="word">good</span> line height calculates the exact number so it always fits the baseline grid!</p>
       </h2>
       <a href="" class="action action--lights colorized" id="toggleLights">Turn off the lights</a>
     </header>
@@ -57,17 +57,17 @@
       <div class="controls">
         <div class="control">
           <label class="control__label">Text size</label>
-          <p class="control__description">The <strong>key</strong>, given any text size it will calculate the <span class="colorized" name="word">good</span> line height so every text sits nicely on the baseline grid.</p>
+          <p class="control__description">The <strong>key</strong>, given any text size it will calculate the line height so every text sits nicely on the baseline grid.</p>
           <input class="control__input" type="number" id="textSizeInput" /><input class="control__range" type="range" id="textSizeRange" min="10" max="80" />
         </div>
         <div class="control">
           <label class="control__label">Multiplier</label>
-          <p class="control__description">This will give you control over the approximate distance between lines. 1.3 is always a <span class="colorized" name="word">good</span> starting point!</p>
+          <p class="control__description">This will give you control over the approximate distance between lines. 1.3 is always a good starting point!</p>
           <input class="control__input" type="number" id="lineHeightRatioInput" step="0.1"/><input class="control__range" type="range" id="lineHeightRatioRange" step="0.1" min="1" max="2" value="1.3" />
         </div>
         <div class="control">
           <label class="control__label">Grid row   height</label>
-          <p class="control__description">8pt baseline grids are becoming a <span class="colorized" name="word">good</span> standard. But, don’t feel bad if you are more of a 10pt or even a 5pt person!</p>
+          <p class="control__description">8pt baseline grids are becoming a standard. But, don’t feel bad if you are more of a 10pt person!</p>
           <input class="control__input" type="number" id="baselineGridInput" min="2" max="16"/><input class="control__range" type="range" id="baselineGridRange" min="2" max="16" />
         </div>
       </div>
