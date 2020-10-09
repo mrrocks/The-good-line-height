@@ -206,10 +206,10 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: var(--color-gray-darker);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .control__description {
-  margin-bottom: 17px;
+  margin-bottom: 21px;
 }
 .control__description strong {
   font-weight: 500;
@@ -223,6 +223,8 @@ body {
   background-color: transparent;
   -webkit-appearance: none;
   border-radius: 0;
+  -moz-appearance:textfield; 
+
 }
 
   .control__input:focus, .control__input:hover {
@@ -235,6 +237,15 @@ body {
     background-position: 0 0, 0 100%;
     background-origin: padding-box, border-box;
     animation: gradient-border var(--gradient-animation);
+  }
+
+
+  .control__input::-webkit-outer-spin-button,
+  .control__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
   }
 
 .control__range {
