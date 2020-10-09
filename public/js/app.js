@@ -94,12 +94,16 @@ let setTextProps = (size, ratio, grid) => {
   updateSample(size)
 }
 
-document.fonts.ready.then(() => {
+var robotoSlab = new FontFace('Roboto Slab', 'url(public/fonts/RobotoSlab-Regular.ttf )', {
+  style: 'normal',
+  weight: '400'
+});
+
+document.fonts.add(robotoSlab);
+
+robotoSlab.loaded.then(() => {
   setTextProps(40, 1.3, 8)
 })
-
-
-// setTextProps(40, 1.3, 8)
 
 textSizeInput.addEventListener("input", function (e) {
   textSizeRange.value = this.value
