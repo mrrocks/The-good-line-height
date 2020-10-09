@@ -226,8 +226,6 @@ body {
   -moz-appearance:textfield;
   font-size: 16px;
   line-height: 16px;
-  text-align: center;
-
 }
 
   .control__input:focus, .control__input:hover {
@@ -254,8 +252,7 @@ body {
 .control__range {
   -webkit-appearance: none;
   margin: 0 0 0 24px;
-  width: 310px;
-  height: 25px;
+  width: 312px;
   height: 2px;
   cursor: pointer;
   background: var(--color-gray-light);
