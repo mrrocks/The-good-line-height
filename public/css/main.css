@@ -193,7 +193,7 @@ body {
 .controls {
   width: 386px;
   margin-right: 106px;
-  margin-top: 7px;
+  margin-top: 6px;
 }
 
 .control:not(:last-child) {
@@ -209,7 +209,7 @@ body {
   margin-bottom: 8px;
 }
 .control__description {
-  margin-bottom: 21px;
+  margin-bottom: 17px;
 }
 .control__description strong {
   font-weight: 500;
@@ -312,13 +312,13 @@ body {
   font-weight: 500;
   font-size: 20px;
   line-height: 32px;
-  margin-bottom: 25px;
+  margin-bottom: 23px;
   color: var(--color-gray-darker);
 }
 
 .baseline-grid-background {
   overflow: hidden;
-  height: 456px;
+  height: 448px;
   background: linear-gradient(
     to bottom,
     var(--color-baseline),
