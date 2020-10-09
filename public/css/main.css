@@ -217,13 +217,16 @@ body {
 
 .control__input {
   border: 2px solid var(--color-gray-darker);
-  width: 56px;
-  padding: 2px 2px 2px 8px;
+  width: 50px;
+  padding: 6px 8px 6px 8px;
   color: var(--color-gray-darker);
   background-color: transparent;
   -webkit-appearance: none;
   border-radius: 0;
-  -moz-appearance:textfield; 
+  -moz-appearance:textfield;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
 
 }
 
@@ -251,7 +254,7 @@ body {
 .control__range {
   -webkit-appearance: none;
   margin: 0 0 0 24px;
-  width: 306px;
+  width: 310px;
   height: 25px;
   height: 2px;
   cursor: pointer;
