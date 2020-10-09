@@ -29,18 +29,6 @@ let getTextProps = () => {
   }
 }
 
-let setTextProps = (size, ratio, grid) => {
-  textSizeInput.value = size
-  lineHeightRatioInput.value = ratio
-  baselineGridInput.value = grid
-
-  textSizeRange.value = size
-  lineHeightRatioRange.value = ratio
-  baselineGridRange.value = grid
-
-  updateSample(size)
-}
-
 const getOffsetRect = (el) => {
   let rect = el.getBoundingClientRect()
 
@@ -93,6 +81,22 @@ let updateSample = () => {
 
   renderBaselineGrid()
 }
+
+let setTextProps = (size, ratio, grid) => {
+  textSizeInput.value = size
+  lineHeightRatioInput.value = ratio
+  baselineGridInput.value = grid
+
+  textSizeRange.value = size
+  lineHeightRatioRange.value = ratio
+  baselineGridRange.value = grid
+
+  updateSample(size)
+}
+
+
+setTextProps(40, 1.3, 8)
+
 
 textSizeInput.addEventListener("input", function (e) {
   textSizeRange.value = this.value
@@ -216,7 +220,5 @@ for (var word of goodWords) {
   word.addEventListener("click", cycleWords)
 }
 
-// Init
 
-setTextProps(40, 1.3, 8)
 

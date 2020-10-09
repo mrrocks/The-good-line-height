@@ -211,6 +211,9 @@ body {
 .control__description {
   margin-bottom: 17px;
 }
+.control__description strong {
+  font-weight: 500;
+}
 
 .control__input {
   border: 2px solid var(--color-gray-darker);
@@ -218,6 +221,8 @@ body {
   padding: 2px 2px 2px 8px;
   color: var(--color-gray-darker);
   background-color: transparent;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
   .control__input:focus, .control__input:hover {
@@ -259,6 +264,7 @@ body {
   background-color: var(--color-gray-darker);
   cursor: pointer;
   -webkit-appearance: none;
+  border: none;
 }
 .control__range:hover::-webkit-slider-thumb {
   height: 24px;
@@ -323,6 +329,8 @@ body {
   vertical-align: middle;
   padding-left: 32px;
   position: relative;
+  font-size: 14px;
+  line-height: 24px;
 }
   .footer::before {
     content: "";
