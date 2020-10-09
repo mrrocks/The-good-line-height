@@ -107,7 +107,7 @@ body {
 
     .action--lights {
       position: absolute;
-      top: 31px;
+      top: 33px;
       right: 0;
     }
       .action--lights::after {
