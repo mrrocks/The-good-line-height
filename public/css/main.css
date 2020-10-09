@@ -1,6 +1,10 @@
 @import "/public/css/reset.css";
 
 :root {
+  --font-base: 14px/24px "Roboto", sans-serif;
+  --font-h1: 48px/64px "Roboto", sans-serif;
+  --font-h2: 20px/32px "Roboto", sans-serif;
+
   --color-gradient-1: #FF5A98;
   --color-gradient-2: #7638F4;
   --color-gradient-3: #11A3D2;
@@ -40,9 +44,8 @@ body.light-theme {
   --color-baseline: var(--color-gray-lightest);
 }
 
-
 body {
-  font: 14px/24px "Roboto", sans-serif;
+  font: var(--font-base);
   color: var(--color-gray-medium);
   -webkit-font-smoothing: antialiased;
   background-color: var(--color-white);
@@ -61,16 +64,14 @@ body {
 }
 
 .header__title {
-  font-size: 48px;
-  line-height: 64px;
+  font: var(--font-h1);
   font-weight: 900;
   margin-bottom: 25px;
   color: var(--color-gray-darker);
 }
 
 .header__subtitle {
-  font-size: 20px;
-  line-height: 32px;
+  font: var(--font-h2);
   font-weight: 400;
 }
 .header__subtitle p:first-child {
@@ -240,7 +241,6 @@ body {
     animation: gradient-border var(--gradient-animation);
   }
 
-
   .control__input::-webkit-outer-spin-button,
   .control__input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -379,4 +379,33 @@ body {
 .footer a {
   font-weight: 500;
   text-decoration: none;
+}
+
+@media (max-width: 575.98px) {
+  :root {
+    --font-h1: 28px/40px "Roboto", sans-serif;
+    --font-h2: 16px/24px "Roboto", sans-serif;
+  }  
+  .app {
+    width: 100%;
+    padding: 24px;
+    margin: 0;
+  }
+
+  .header {
+    padding-bottom: 33px;
+    margin-bottom: 29px;
+  }
+
+  .content {
+    display: block;
+  }
+
+  .controls {
+    width: 100%;
+  }
+
+  .result {
+    width: 100%;
+  }
 }
