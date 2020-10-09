@@ -94,7 +94,11 @@ let setTextProps = (size, ratio, grid) => {
   updateSample(size)
 }
 
-setTextProps(40, 1.3, 8)
+document.fonts.onloadingdone = function (fontFaceSetEvent) {
+  setTextProps(40, 1.3, 8)
+};
+
+// setTextProps(40, 1.3, 8)
 
 textSizeInput.addEventListener("input", function (e) {
   textSizeRange.value = this.value
