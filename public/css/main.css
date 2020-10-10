@@ -68,6 +68,7 @@ body {
   font-weight: 900;
   margin-bottom: 25px;
   color: var(--color-gray-darker);
+  user-select: none;
 }
 
 .header__subtitle {
@@ -102,7 +103,8 @@ body {
     content: "";
     width: 24px;
     height: 24px;
-    left: 0; 
+    left: 0;
+    top: 0;
   }
 
     .action--lights {
@@ -219,6 +221,7 @@ body {
   border: 2px solid var(--color-gray-darker);
   width: 50px;
   padding: 6px 8px 6px 8px;
+  margin-right: 24px;
   color: var(--color-gray-darker);
   background-color: transparent;
   -webkit-appearance: none;
@@ -250,8 +253,7 @@ body {
 
 .control__range {
   -webkit-appearance: none;
-  margin: 0 0 0 24px;
-  width: 278px;
+  width: calc(100% - (54px + 24px));
   height: 2px;
   cursor: pointer;
   background: var(--color-gray-light);
@@ -351,6 +353,7 @@ body {
     width: 24px;
     height: 24px;
     left: 0;
+    top: 0;
     background: var(--color-gradient);
     background-size: 800% 800%;
     animation: gradient var(--gradient-animation);
@@ -389,22 +392,59 @@ body {
   }  
   .app {
     width: 100%;
-    padding: 24px;
+    padding: 16px 24px 24px 24px;
     margin: 0;
   }
 
   .header {
-    padding-bottom: 33px;
-    margin-bottom: 29px;
+    padding-bottom: 27px;
+    margin-bottom: 31px;
   }
+    .header__title {
+      margin-bottom: 17px;
+      padding-right: 32px;
+    }
+
+    .header__subtitle p:first-child {
+      margin-bottom: 29px;
+    }
+
+    .action--lights {
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      top: 8px;
+      padding: 0;
+    }
 
   .content {
     display: block;
+    padding-bottom: 26px;
+    margin-bottom: 31px;
   }
 
   .controls {
     width: 100%;
+    border-bottom: 2px solid var(--color-gray-lightest);
+    padding-bottom: 30px;
+    margin-bottom: 31px;
   }
+    .control:not(:last-child) {
+      margin-bottom: 31px;
+    }
+
+  .result {
+    margin-left: 0;
+  }
+    .result__header {
+      font: var(--font-h2);
+      font-weight: 500;
+      margin-bottom: 17px;
+    } 
+
+      .action--toggle-visibility {
+        top: 0;
+      }
 
   .result {
     width: 100%;
