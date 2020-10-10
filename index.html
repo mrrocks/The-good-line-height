@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>The good line height</title>
+  <title>The good line-height</title>
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,11 +45,11 @@
   <div class="app">
     <header class="header">
       <h1 class="header__title">
-        The <span class="colorized" name="word">good</span> line height
+        The <span class="colorized" name="word">good</span> line-height
       </h1>
       <h2 class="header__subtitle">
-        <p>Have you ever needed to create a type scale following an 8 point baseline grid, or really any grid, and had to spend extra time figuring out what should be the right line height for every text size in the scale?</p>
-        <p>No worries! The <span class="colorized" name="word">good</span> line height calculates the exact number so it always fits the baseline grid!</p>
+        <p>Have you ever needed to create a type scale following an 8 point baseline grid, or really any grid, and had to spend extra time figuring out what should be the right line-height for every text size in the scale?</p>
+        <p>No worries! The <span class="colorized" name="word">good</span> line-height calculates the exact number so it always fits the baseline grid!</p>
       </h2>
       <a href="" class="action action--lights colorized" id="toggleLights">Turn off the lights</a>
     </header>
@@ -57,7 +57,7 @@
       <div class="controls">
         <div class="control">
           <label class="control__label">Text size</label>
-          <p class="control__description">The <strong>key</strong>, given any text size it will calculate the line height so every text sits nicely on the baseline grid.</p>
+          <p class="control__description">The <strong>key</strong>, given any text size it will calculate the line-height so every text sits nicely on the baseline grid.</p>
           <input class="control__input" type="number" id="textSizeInput" /><input class="control__range" type="range" id="textSizeRange" min="10" max="80" />
         </div>
         <div class="control">
@@ -66,13 +66,13 @@
           <input class="control__input" type="number" id="lineHeightRatioInput" step="0.1"/><input class="control__range" type="range" id="lineHeightRatioRange" step="0.1" min="1" max="2" value="1.3" />
         </div>
         <div class="control">
-          <label class="control__label">Grid row   height</label>
+          <label class="control__label">Grid row height</label>
           <p class="control__description">8pt baseline grids are becoming a standard. But, don’t feel bad if you are more of a 10pt person!</p>
           <input class="control__input" type="number" id="baselineGridInput" min="2" max="16"/><input class="control__range" type="range" id="baselineGridRange" min="2" max="16" />
         </div>
       </div>
       <div class="result">
-        <h2 class="result__header">The <span class="colorized" name="word">good</span> line height is <span class="colorized" id="generatedLineHeight"></span></h2>
+        <h2 class="result__header">The <span class="colorized" name="word">good</span> line-height is <span class="colorized" id="generatedLineHeight"></span></h2>
         <a href="javascript:toggleBaselineVisibility()" class="action action--toggle-visibility colorized" id="baselineGridVisibility">Hide grid</a>
         <div class="baseline-grid-background" id="baselineGridBackground">
           <div id="sample">The Lorem ipsum text is derived from sections 1.10.32 and 1.10.33 of Cicero's De finibus bonorum et malorum. The physical source may have been the 1914 Loeb Classical Library edition of De finibus, where the Latin text, presented on the left-hand (even) pages, breaks off on page 34 with "Neque porro quisquam est qui do-" and continues on page 36 with "lorem ipsum ...", suggesting that the galley type of that page was mixed up to make the dummy text seen today.<br><br>The discovery of the text's origin is attributed to Richard McClintock, a Latin scholar at Hampden–Sydney College. McClintock connected Lorem ipsum to Cicero's writing sometime before 1982 while searching for instances of the Latin word consectetur, which was rarely used in classical literature.[4] McClintock first published his discovery in a 1994 letter to the editor of Before & After magazine, contesting the editor's earlier claim that Lorem ipsum had no meaning.<br><br>The relevant section of Cicero as printed in the source is reproduced below with fragments used in Lorem ipsum underlined. Letters in brackets were added to Lorem ipsum and were not present in the source text:<br><br>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng]velit, sed quia non-numquam [do] eius modi tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum[d] exercitationem ullam corporis suscipitlaboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui inea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non-provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non-recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat…<br><br>This is H. Rackham's translation as printed in the Loeb Classical Library edition with underlining added for the translation of the text found in the example of the Lorem ipsum[2]:<br><br>But I must explain to you how all this mistaken idea of denouncing of a pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammeled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse.</div>
