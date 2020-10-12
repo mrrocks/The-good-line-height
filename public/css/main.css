@@ -142,7 +142,7 @@ body {
 
 .colorized {
   background: var(--color-gradient);
-  background-size:s 800% 800%;
+  background-size: 800% 800%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
