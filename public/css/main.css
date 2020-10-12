@@ -142,8 +142,9 @@ body {
 
 .colorized {
   background: var(--color-gradient);
-  background-size: 800% 800%;
+  background-size:s 800% 800%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 	animation: gradient var(--gradient-animation);
 }
