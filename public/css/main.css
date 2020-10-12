@@ -143,7 +143,7 @@ body {
 .colorized {
   background: var(--color-gradient);
   background-size: 800% 800%;
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 	animation: gradient var(--gradient-animation);
 }
@@ -331,6 +331,7 @@ body {
   background-size: 100% 16px;
   font-family: "Roboto Slab", serif;
   color: var(--color-gray-darker);
+  /* padding: 0 4px 0 0; */
 }
 
   .baseline-grid-background--not-visible {
