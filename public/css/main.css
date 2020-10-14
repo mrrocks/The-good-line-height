@@ -23,11 +23,11 @@
 body.dark-theme {
   --color-white: #212224;
 
-  --color-gray-darker: rgba(255, 255, 255, 1);
+  --color-gray-darker: rgba(255, 255, 255, 0.98);
   --color-gray-medium: rgba(255, 255, 255, 0.7);
   --color-gray-light: rgba(255, 255, 255, 0.24);
   --color-gray-lighter: rgba(255, 255, 255, 0.08);
-  --color-gray-lightest: rgba(255, 255, 255, 0.06);
+  --color-gray-lightest: rgba(255, 255, 255, 0.08);
 
   --color-baseline: var(--color-gray-lightest);
 }
