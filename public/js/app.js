@@ -206,7 +206,7 @@ if (currentTheme == "dark") {
 
 // Cicling "good" words
 
-const words = ["phenomenal", "fantastic", "remarkable", "fabolous", "prodigious", "astonishing", "good"]
+const words = ["phenomenal", "fantastic", "remarkable", "fabulous", "prodigious", "astonishing", "good"]
 
 const goodWords = document.getElementsByName("word")
 
