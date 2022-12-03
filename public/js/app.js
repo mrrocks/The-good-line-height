@@ -1,230 +1,249 @@
-const baselineGridBackground = document.getElementById("baselineGridBackground")
-const baselineGridVisibility = document.getElementById("baselineGridVisibility")
-const toggleLightsAction = document.getElementById("toggleLights")
+const baselineGridBackground = document.getElementById(
+  "baselineGridBackground"
+);
+const baselineGridVisibility = document.getElementById(
+  "baselineGridVisibility"
+);
+const toggleLightsAction = document.getElementById("toggleLights");
 
-const textSizeInput = document.getElementById("textSizeInput")
-const textSizeRange = document.getElementById("textSizeRange")
+const textSizeInput = document.getElementById("textSizeInput");
+const textSizeRange = document.getElementById("textSizeRange");
 
-const lineHeightRatioInput = document.getElementById("lineHeightRatioInput")
-const lineHeightRatioRange = document.getElementById("lineHeightRatioRange")
+const lineHeightRatioInput = document.getElementById("lineHeightRatioInput");
+const lineHeightRatioRange = document.getElementById("lineHeightRatioRange");
 
-const baselineGridInput = document.getElementById("baselineGridInput")
-const baselineGridRange = document.getElementById("baselineGridRange")
+const baselineGridInput = document.getElementById("baselineGridInput");
+const baselineGridRange = document.getElementById("baselineGridRange");
 
-const generatedLineHeight = document.getElementById("generatedLineHeight")
+const generatedLineHeight = document.getElementById("generatedLineHeight");
 
-const sample = document.getElementById("sample")
+const sample = document.getElementById("sample");
 
-let gridIsVisible = true
+let gridIsVisible = true;
 
-let getTextProps = () => {
-  size = Number(textSizeInput.value)
-  ratio = Number(lineHeightRatioInput.value)
-  grid = Number(baselineGridInput.value)
+const getTextProps = () => {
+  const size = Number(textSizeInput.value);
+  const ratio = Number(lineHeightRatioInput.value);
+  const grid = Number(baselineGridInput.value);
 
-  return {
-    size,
-    ratio,
-    grid,
-  }
-}
+  return { size, ratio, grid };
+};
 
 const getOffsetRect = (el) => {
-  let rect = el.getBoundingClientRect()
+  let rect = el.getBoundingClientRect();
 
-  let left = rect.left + window.pageXOffset
-  let top = rect.top + window.pageYOffset
-  let right = rect.right + window.pageXOffset
-  let bottom = rect.bottom + window.pageYOffset
+  return {
+    left: rect.left + window.pageXOffset,
+    top: rect.top + window.pageYOffset,
+    right: rect.right + window.pageXOffset,
+    bottom: rect.bottom + window.pageYOffset,
+  };
+};
 
-  return { left, top, right, bottom }
-}
+const calculateBaselineOffset = () => {
+  const proxy = document.createElement("span");
+  proxy.style.fontSize = "0";
+  proxy.innerText = "A";
+  sample.insertBefore(proxy, sample.firstChild);
 
-let calculateBaselineOffset = () => {
-  let proxy = document.createElement("span")
-  proxy.setAttribute("style", "font-size:0")
-  proxy.innerText = "A"
-  sample.insertBefore(proxy, sample.firstChild)
+  const offset = getOffsetRect(proxy).bottom - getOffsetRect(sample).top;
 
-  let offset = getOffsetRect(proxy).bottom - getOffsetRect(sample).top
+  proxy.remove();
 
-  proxy.remove()
+  return offset;
+};
 
-  return offset
-}
+const calculateLineHeight = ({ size, ratio, grid }) => {
+  const lineHeight = Math.round((size * ratio) / grid) * grid;
 
-let calculateLineHeight = ({ size, ratio, grid }) => {
-  let lineHeight = Math.ceil((size * ratio) / grid) * grid
+  return lineHeight;
+};
 
-  return lineHeight
-}
+const renderBaselineGrid = () => {
+  const { grid } = getTextProps();
+  baselineGridBackground.style.backgroundSize = `100% ${grid * 2}px`;
+};
 
-let renderBaselineGrid = () => {
-  baselineGridBackground.style.backgroundSize = `100% ${
-    getTextProps().grid * 2
-  }px`
-}
+const setSampleStyles = (textProps, lineHeight) => {
+  sample.style.fontSize = `${textProps.size}px`;
+  sample.style.lineHeight = `${lineHeight}px`;
+};
+
+const setBaselineGrid = (textProps) => {
+  let adjustedOffset =
+    -Math.abs(calculateBaselineOffset()) + lineHeight - textProps.grid;
+  sample.style.marginTop = `${adjustedOffset}px`;
+};
 
 let updateSample = () => {
-  let textProps = getTextProps()
-  let lineHeight = calculateLineHeight(textProps)
+  // Get text properties
+  let textProps = getTextProps();
+  let lineHeight = calculateLineHeight(textProps);
 
-  sample.style.fontSize = `${textProps.size}px`
-  sample.style.lineHeight = `${lineHeight}px`
+  sample.style.fontSize = `${textProps.size}px`;
+  sample.style.lineHeight = `${lineHeight}px`;
 
   let adjustedOffset =
-    -Math.abs(calculateBaselineOffset()) + lineHeight - textProps.grid
+    -Math.abs(calculateBaselineOffset()) + lineHeight - textProps.grid;
+  sample.style.marginTop = `${adjustedOffset}px`;
 
-  sample.style.marginTop = `${adjustedOffset}px`
+  generatedLineHeight.innerHTML = lineHeight;
+  renderBaselineGrid();
+};
 
-  generatedLineHeight.innerHTML = lineHeight
+const setTextProps = (size, ratio, grid) => {
+  textSizeInput.value = size;
+  textSizeRange.value = size;
 
-  renderBaselineGrid()
-}
+  lineHeightRatioInput.value = ratio;
+  lineHeightRatioRange.value = ratio;
 
-let setTextProps = (size, ratio, grid) => {
-  textSizeInput.value = size
-  lineHeightRatioInput.value = ratio
-  baselineGridInput.value = grid
+  baselineGridInput.value = grid;
+  baselineGridRange.value = grid;
 
-  textSizeRange.value = size
-  lineHeightRatioRange.value = ratio
-  baselineGridRange.value = grid
+  updateSample(size);
+};
 
-  updateSample(size)
-}
-
-var robotoSlab = new FontFace('Roboto Slab', 'url(public/fonts/RobotoSlab-Regular.ttf )', {
-  style: 'normal',
-  weight: '400'
-});
+var robotoSlab = new FontFace(
+  "Roboto Slab",
+  "url(public/fonts/RobotoSlab-Regular.ttf )",
+  {
+    style: "normal",
+    weight: "400",
+  }
+);
 
 document.fonts.add(robotoSlab);
 
 robotoSlab.loaded.then(() => {
-  setTextProps(38, 1.3, 8)
-})
+  setTextProps(38, 1.3, 8);
+});
 
-textSizeInput.addEventListener("input", function (e) {
-  textSizeRange.value = this.value
-  updateSample(this.value)
-})
-textSizeRange.addEventListener("input", function (e) {
-  textSizeInput.value = this.value
-  updateSample(this.value)
-})
+const inputs = [
+  textSizeInput,
+  textSizeRange,
+  lineHeightRatioInput,
+  lineHeightRatioRange,
+  baselineGridInput,
+  baselineGridRange,
+];
 
-lineHeightRatioInput.addEventListener("input", function (e) {
-  lineHeightRatioRange.value = this.value
-  updateSample(this.value)
-})
-lineHeightRatioRange.addEventListener("input", function (e) {
-  lineHeightRatioInput.value = this.value
-  updateSample(this.value)
-})
-
-baselineGridInput.addEventListener("input", function (e) {
-  baselineGridRange.value = this.value
-  updateSample(this.value)
-})
-baselineGridRange.addEventListener("input", function (e) {
-  baselineGridInput.value = this.value
-  updateSample(this.value)
-})
+inputs.forEach((input) => {
+  input.addEventListener("input", function (e) {
+    const siblingInput =
+      input === textSizeInput ||
+      input === lineHeightRatioInput ||
+      input === baselineGridInput
+        ? input.nextElementSibling
+        : input.previousElementSibling;
+    siblingInput.value = this.value;
+    updateSample(this.value);
+  });
+});
 
 // Baseline grid visibility
 
-let toggleBaselineVisibility = () => {
+const toggleBaselineVisibility = () => {
   baselineGridBackground.classList.toggle(
     "baseline-grid-background--not-visible"
-  )
+  );
+  gridIsVisible = !gridIsVisible;
 
-  if (gridIsVisible === true) {
-    baselineGridVisibility.innerText = "Show grid"
-    baselineGridVisibility.classList.add("action--toggle-visibility--show")
-    gridIsVisible = false
-  } else {
-    baselineGridVisibility.innerText = "Hide grid"
-    baselineGridVisibility.classList.remove("action--toggle-visibility--show")
-    gridIsVisible = true
-  }
-}
+  const actionText = gridIsVisible ? "Hide grid" : "Show grid";
+  baselineGridVisibility.innerText = actionText;
+  baselineGridVisibility.classList.toggle("action--toggle-visibility--show");
+};
 
 // Color themes
-const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)")
+const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-let localTheme = localStorage.getItem("theme")
-let bodyClasses = document.body.classList
-let currentThemes
+let localTheme = localStorage.getItem("theme");
+let bodyClasses = document.body.classList;
+let currentThemes;
 
-if (localTheme){
-  currentTheme = localTheme
+if (localTheme) {
+  currentTheme = localTheme;
 } else {
-  currentTheme = isDarkTheme.matches ? "dark" : "light"
+  currentTheme = isDarkTheme.matches ? "dark" : "light";
 }
 
 let switchToLightTheme = () => {
-  currentTheme = "light"
+  currentTheme = "light";
 
-  bodyClasses.replace("dark-theme", "light-theme")
-  toggleLightsAction.innerText = "Turn off the lights"
-  toggleLightsAction.classList.remove("action--lights--on")
+  bodyClasses.replace("dark-theme", "light-theme");
+  toggleLightsAction.innerText = "Turn off the lights";
+  toggleLightsAction.classList.remove("action--lights--on");
 
-  localStorage.setItem("theme", currentTheme)
-}
+  localStorage.setItem("theme", currentTheme);
+};
 
 let switchToDarkTheme = () => {
-  currentTheme = "dark"
+  currentTheme = "dark";
 
-  bodyClasses.replace("light-theme", "dark-theme")
-  toggleLightsAction.innerText = "Turn on the lights"
-  toggleLightsAction.classList.add("action--lights--on")
+  bodyClasses.replace("light-theme", "dark-theme");
+  toggleLightsAction.innerText = "Turn on the lights";
+  toggleLightsAction.classList.add("action--lights--on");
 
-  localStorage.setItem("theme", currentTheme)
+  localStorage.setItem("theme", currentTheme);
+};
+
+let toggleLights = (e) => {
+  e.preventDefault();
+  currentTheme == "dark" ? switchToLightTheme() : switchToDarkTheme();
+};
+
+toggleLightsAction.addEventListener("click", toggleLights);
+
+if (currentTheme === "dark") {
+  switchToDarkTheme();
+} else if (currentTheme === "light") {
+  switchToLightTheme();
 }
-
-let toggleLights = () => {
-  if (currentTheme == "dark") {
-    switchToLightTheme()
-  } else if (currentTheme == "light") {
-    switchToDarkTheme()
-  }
-}
-
-toggleLightsAction.addEventListener("click", function (e) {
-  e.preventDefault()
-  toggleLights()
-})
-
-if (currentTheme == "dark") {
-  bodyClasses.add("dark-theme")
-  switchToDarkTheme()
-} else if (currentTheme == "light") {
-  bodyClasses.add("light-theme")
-  switchToLightTheme()
-}
+bodyClasses.add(currentTheme + "-theme");
 
 // Cicling "good" words
 
-const words = ["phenomenal", "fantastic", "remarkable", "fabulous", "prodigious", "astonishing", "good"]
+const words = [
+  "phenomenal",
+  "fantastic",
+  "remarkable",
+  "fabulous",
+  "prodigious",
+  "astonishing",
+  "good",
+  "amazing",
+  "astounding",
+  "incredible",
+  "magnificent",
+  "marvelous",
+  "stupendous",
+  "wonderful",
+];
 
-const goodWords = document.getElementsByName("word")
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
-let count = 0
+const goodWords = document.getElementsByName("word");
 
-let cycleWords = () => {
-  if (count == words.length) { count = 0 }
-  
-  for (var word of goodWords) {
-    word.innerText = words[count]
+let wordIndex = 0;
+
+const cycleWords = () => {
+  if (wordIndex === words.length) {
+    shuffle(words);
+    wordIndex = 0;
   }
 
-  count ++
+  for (const word of goodWords) {
+    word.innerText = words[wordIndex];
+  }
+
+  wordIndex++;
+};
+
+for (const word of goodWords) {
+  word.addEventListener("click", cycleWords);
 }
-
-for (var word of goodWords) {
-  word.addEventListener("click", cycleWords)
-}
-
-
-
